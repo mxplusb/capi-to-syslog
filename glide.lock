@@ -1,0 +1,29 @@
+hash: 98dc00d3e1aaa83faba3524f5a52a7d0faafb8fa263c8c29e678e6b431a8f519
+updated: 2017-03-27T09:35:50.4587593-12:00
+imports:
+- name: github.com/golang/protobuf
+  version: c9c7427a2a70d2eb3bafa0ab2dc163e45f143317
+  subpackages:
+  - proto
+- name: golang.org/x/net
+  version: 6c23252515492caf9b228a9d5cabcdbde29f7f82
+  subpackages:
+  - context
+- name: golang.org/x/oauth2
+  version: 7fdf09982454086d5570c7db3e11f360194830ca
+  subpackages:
+  - clientcredentials
+  - internal
+- name: google.golang.org/appengine
+  version: 56d253d1dd14aa01937e12c73a0971bcfd797ff2
+  subpackages:
+  - internal
+  - internal/base
+  - internal/datastore
+  - internal/log
+  - internal/remote_api
+  - internal/urlfetch
+  - urlfetch
+- name: gopkg.in/robfig/cron.v2
+  version: be2e0b0deed5a68ffee390b4583a13aff8321535
+testImports: []
