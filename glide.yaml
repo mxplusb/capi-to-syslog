@@ -1,4 +1,4 @@
-package: ssh-to-syslog
+package: capi-to-syslog
 import:
 - package: golang.org/x/oauth2
   subpackages:

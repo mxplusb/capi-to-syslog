@@ -75,10 +75,17 @@ func GetLogs(client *http.Client, r *http.Request, ch chan bool) {
 		panic(err)
 	}
 
+	if len(events.Resources) > 1 {
+		fmt.Printf("there are no events since last checked!")
+	}
+
 	for resource := range events.Resources {
 		fmt.Printf("%#v\n", events.Resources[resource].Entity)
 	}
 }
+
+// type:audit.app.ssh-authorized,type:audit.app.ssh-unauthorized,type:audit.app.create,type:audit.app.start,type:audit.app.stop,type:audit.app.update,type:audit.app.delete-request,type:audit.service_key.create,type:audit.service_key.delete,type:audit.space.create
+
 
 func RequestBuilder(idx int, listenChan chan bool, client *http.Client) {
 	req, err := http.NewRequest("GET", "https://api."+CapiSystemURI+"/v2/events", nil)
@@ -88,12 +95,14 @@ func RequestBuilder(idx int, listenChan chan bool, client *http.Client) {
 	}
 
 	now := time.Now()
-	then := now.Add(time.Duration(time.Minute * -5))
+	then := now.Add(time.Duration(time.Minute * -1))
 
 	q := req.URL.Query()
 	q.Add("q", AuditableEvents[idx])
 	q.Add("q", "timestamp>"+then.Format(time.RFC3339))
 	req.URL.RawQuery = q.Encode()
+
+	fmt.Printf("looking for events here: %s\n", req.URL.RawQuery)
 
 	req.Header.Set("Content-Type", "application/json")
 	req.Header.Set("Accept", "application/json")
@@ -162,8 +171,10 @@ func main() {
 		}
 	}
 
+	bleh()
+
 	c := cron.New()
-	c.AddFunc("* 5 * * * *", bleh)
+	c.AddFunc("59 * * * * *", bleh)
 	c.Start()
 
 	for i := range listenChan {
