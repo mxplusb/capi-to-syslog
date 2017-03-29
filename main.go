@@ -102,7 +102,7 @@ func RequestBuilder(idx int, listenChan chan bool, client *http.Client) {
 	q.Add("q", "timestamp>"+then.Format(time.RFC3339))
 	req.URL.RawQuery = q.Encode()
 
-	fmt.Printf("looking for events here: %s\n", req.URL.RawQuery)
+	fmt.Printf("looking for events here: %s\n", AuditableEvents[idx])
 
 	req.Header.Set("Content-Type", "application/json")
 	req.Header.Set("Accept", "application/json")
