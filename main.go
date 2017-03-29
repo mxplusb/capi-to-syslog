@@ -112,9 +112,12 @@ func SetEnvVars() {
 	}
 
 	InsecureSkipVerifyString := os.Getenv("INSECURE_SKIP_VERIFY")
-	InsecureSkipVerify, err = strconv.ParseBool(InsecureSkipVerifyString)
-	if err != nil {
-		panic(err)
+
+	if InsecureSkipVerifyString == "true" {
+		InsecureSkipVerify, err = strconv.ParseBool(InsecureSkipVerifyString)
+		if err != nil {
+			panic(err)
+		}
 	}
 
 	localAudits := os.Getenv("CAPI_EVENTS")

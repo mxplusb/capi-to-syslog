@@ -1,0 +1,1 @@
+To build: `gox; for i in $(ls capi-to-syslog_*); do tar -cvzf $i.tar.gz $i; rm $i; done`
