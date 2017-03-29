@@ -75,17 +75,12 @@ func GetLogs(client *http.Client, r *http.Request, ch chan bool) {
 		panic(err)
 	}
 
-	if len(events.Resources) > 1 {
-		fmt.Printf("there are no events since last checked!")
-	}
-
 	for resource := range events.Resources {
 		fmt.Printf("%#v\n", events.Resources[resource].Entity)
 	}
 }
 
 // type:audit.app.ssh-authorized,type:audit.app.ssh-unauthorized,type:audit.app.create,type:audit.app.start,type:audit.app.stop,type:audit.app.update,type:audit.app.delete-request,type:audit.service_key.create,type:audit.service_key.delete,type:audit.space.create
-
 
 func RequestBuilder(idx int, listenChan chan bool, client *http.Client) {
 	req, err := http.NewRequest("GET", "https://api."+CapiSystemURI+"/v2/events", nil)
