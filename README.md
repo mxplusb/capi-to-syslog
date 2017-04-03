@@ -22,4 +22,3 @@ for i in $(ls capi-to-syslog_*); do
   rm $i
 done
 ```
-
