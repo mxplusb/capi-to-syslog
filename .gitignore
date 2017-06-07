@@ -1,5 +1,4 @@
 
 .idea/
 /capi-to-syslog
-/vendor/
 *.tar.gz
