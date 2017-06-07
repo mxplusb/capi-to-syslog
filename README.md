@@ -6,6 +6,7 @@ To build: `gox; for i in $(ls capi-to-syslog_*); do chmod a+x $i; tar -cvzf $i.t
 
 To set up the environment:
 ```
+cf set-env capi-to-syslog GOPACKAGENAME capi-to-syslog # only if CF doesn't have internet access.
 cf set-env capi-to-syslog CAPI_CLIENT_ID MyUniqueUaaClient
 cf set-env capi-to-syslog CAPI_CLIENT_SECRET MyClientSecret123!
 cf set-env capi-to-syslog CAPI_SYSTEM_URI system.internal.domain
