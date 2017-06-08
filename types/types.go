@@ -2,7 +2,7 @@
 Mike's note: This is the weirdest code I've ever written. I wrote most of it, but it's fucking weird.
 */
 
-package internal
+package types
 
 import (
 	"encoding/json"

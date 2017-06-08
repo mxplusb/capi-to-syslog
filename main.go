@@ -6,6 +6,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"net/http"
+	"github.com/mxplusb/capi-to-syslog/types"
 	"os"
 	"strconv"
 	"strings"
@@ -69,7 +70,7 @@ func GetLogs(client *http.Client, r *http.Request, ch chan bool) {
 	}
 	defer resp.Body.Close()
 
-	var events Events
+	var events types.AppEvent
 	if err := json.NewDecoder(resp.Body).Decode(&events); err != nil {
 		ch <- false
 		panic(err)
@@ -79,8 +80,6 @@ func GetLogs(client *http.Client, r *http.Request, ch chan bool) {
 		fmt.Printf("%#v\n", events.Resources[resource].Entity)
 	}
 }
-
-// type:audit.app.ssh-authorized,type:audit.app.ssh-unauthorized,type:audit.app.create,type:audit.app.start,type:audit.app.stop,type:audit.app.update,type:audit.app.delete-request,type:audit.service_key.create,type:audit.service_key.delete,type:audit.space.create
 
 func RequestBuilder(idx int, listenChan chan bool, client *http.Client) {
 	req, err := http.NewRequest("GET", "https://api."+CapiSystemURI+"/v2/events", nil)

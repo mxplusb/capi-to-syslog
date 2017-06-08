@@ -1,5 +1,7 @@
 ## CAPI to Syslog
 
+[![Build Status](https://travis-ci.org/mxplusb/capi-to-syslog.svg)](https://travis-ci.org/mxplusb/capi-to-syslog)
+
 Forwards configured events to the downstream syslog via an application instance.
 
 ### Configure

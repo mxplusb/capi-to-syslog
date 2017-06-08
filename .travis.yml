@@ -1,0 +1,6 @@
+language: go
+
+sudo: false
+
+before_install:
+  - go test -v -race ./...
