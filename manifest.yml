@@ -1,0 +1,15 @@
+---
+applications:
+- name: capi-to-syslog
+  buildpack: go_buildpack
+  disk_quota: 50M
+  health-check-type: process
+  instances: 1
+  memory: 32M
+  no-route: true
+  env:
+    CAPI_CLIENT_ID: firehose
+    CAPI_CLIENT_SECRET: XXXXXXXXXXXXXXXXXXX
+    CAPI_EVENTS: "type:audit.app.ssh-authorized,type:audit.app.ssh-unauthorized,type:audit.service_key.create,type:audit.service_key.delete,type:audit.space.create,type:audit.app.create,type:audit.app.update"
+    CAPI_SYSTEM_URI: system.yourdomain.com
+    GOPACKAGENAME: capi-to-syslog
