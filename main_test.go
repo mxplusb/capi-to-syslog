@@ -14,23 +14,19 @@ func TestSetEnvVars(t *testing.T) {
 	}()
 
 	if err := os.Setenv("CAPI_CLIENT_ID", "idontcare"); err != nil {
-		t.Log(err)
-		t.Fail()
+		t.Fatal(err)
 	}
 
 	if err := os.Setenv("CAPI_CLIENT_SECRET", "whatisfordinner"); err != nil {
-		t.Log(err)
-		t.Fail()
+		t.Fatal(err)
 	}
 
 	if err := os.Setenv("CAPI_SYSTEM_URI", "breakfast.is.awesome"); err != nil {
-		t.Log(err)
-		t.Fail()
+		t.Fatal(err)
 	}
 
 	if err := os.Setenv("CAPI_EVENTS", "type:audit.app.ssh-authorized,type:audit.app.ssh-unauthorized,type:audit.service_key.create,type:audit.service_key.delete,type:audit.space.create,type:audit.app.create"); err != nil {
-		t.Log(err)
-		t.Fail()
+		t.Fatal(err)
 	}
 
 	SetEnvVars()
