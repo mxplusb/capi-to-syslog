@@ -2,3 +2,4 @@
 .idea/
 /capi-to-syslog
 *.tar.gz
+/capi-to-syslog.exe
